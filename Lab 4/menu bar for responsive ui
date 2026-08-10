@@ -14,36 +14,80 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Responsive UI"),
-          actions: [
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Home",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "About",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Service",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Contact",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
+
+          // Desktop / Large Screen
+          actions: width >= 600
+              ? [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Home",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "About",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Service",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Contact",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ]
+
+              // Mobile Screen - 3 dot menu
+              : [
+                  PopupMenuButton<String>(
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Colors.black,
+                    ),
+                    onSelected: (value) {
+                      if (value == "Home") {
+                        print("Home clicked");
+                      } else if (value == "About") {
+                        print("About clicked");
+                      } else if (value == "Service") {
+                        print("Service clicked");
+                      } else if (value == "Contact") {
+                        print("Contact clicked");
+                      }
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return [
+                        PopupMenuItem(
+                          value: "Home",
+                          child: Text("Home"),
+                        ),
+                        PopupMenuItem(
+                          value: "About",
+                          child: Text("About"),
+                        ),
+                        PopupMenuItem(
+                          value: "Service",
+                          child: Text("Service"),
+                        ),
+                        PopupMenuItem(
+                          value: "Contact",
+                          child: Text("Contact"),
+                        ),
+                      ];
+                    },
+                  ),
+                ],
         ),
         body: Container(
           width: double.infinity,
