@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Responsive UI"),
